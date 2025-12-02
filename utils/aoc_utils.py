@@ -92,10 +92,10 @@ class AOCDay:
         file.write(str_to_write)
         file.close()
 
-    def part1(self, input_data: Input) -> int:
+    def part1(self, data: Input) -> int:
         pass
 
-    def part2(self, input_data: Input) -> int:
+    def part2(self, data: Input) -> int:
         pass
 
 class Input:

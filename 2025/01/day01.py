@@ -7,10 +7,10 @@ class Day01(AOCDay):
     expected_example_part1_result = 3
     expected_example_part2_result = 6
 
-    def part1(self, input_data: Input):
+    def part1(self, data: Input):
         dial = 50
         count_of_zeros = 0
-        for line in input_data.lines:
+        for line in data.lines:
             if line.startswith("L"):
                 dial -= int(line[1:])
             elif line.startswith("R"):
@@ -20,9 +20,9 @@ class Day01(AOCDay):
                 count_of_zeros = count_of_zeros + 1
         return count_of_zeros
 
-    def part2(self, input_data: Input):
+    def part2(self, data: Input):
         dial = Dial()
-        for line in input_data.lines:
+        for line in data.lines:
             if line.startswith("L"):
                 dial.turn_left(int(line[1:]))
             elif line.startswith("R"):

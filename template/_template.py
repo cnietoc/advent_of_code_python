@@ -7,10 +7,10 @@ class DayTemplate(AOCDay):
     expected_example_part1_result = 0
     expected_example_part2_result = 0
 
-    def part1(self, input_data: Input) -> int:
+    def part1(self, data: Input) -> int:
         return 0
 
-    def part2(self, input_data: Input) -> int:
+    def part2(self, data: Input) -> int:
         return 0
 
 if __name__ == "__main__":
