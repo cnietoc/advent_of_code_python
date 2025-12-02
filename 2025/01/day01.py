@@ -10,7 +10,7 @@ class Day01(AOCDay):
     def part1(self, input_data: Input):
         dial = 50
         count_of_zeros = 0
-        for line in input_data.data:
+        for line in input_data.lines:
             if line.startswith("L"):
                 dial -= int(line[1:])
             elif line.startswith("R"):
@@ -22,7 +22,7 @@ class Day01(AOCDay):
 
     def part2(self, input_data: Input):
         dial = Dial()
-        for line in input_data.data:
+        for line in input_data.lines:
             if line.startswith("L"):
                 dial.turn_left(int(line[1:]))
             elif line.startswith("R"):

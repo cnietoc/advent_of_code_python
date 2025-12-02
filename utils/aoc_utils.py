@@ -99,13 +99,13 @@ class AOCDay:
         pass
 
 class Input:
-    data = []
-    raw_data = ""
+    lines = []
+    raw = ""
 
     def __init__(self, file_path):
         self.read_input(file_path)
 
     def read_input(self, file_path):
         with open(file_path, 'r') as file:
-            self.raw_data = file.read()
-        self.data = self.raw_data.splitlines()
+            self.raw = file.read()
+        self.lines = self.raw.splitlines()
