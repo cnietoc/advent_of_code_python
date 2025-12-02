@@ -31,6 +31,7 @@ AOC_YEAR=2025
 A day file is created with this template :
 ```python
 import os
+
 from utils.aoc_utils import AOCDay, Input
 from dotenv import load_dotenv
 
@@ -38,28 +39,28 @@ class DayTemplate(AOCDay):
     expected_example_part1_result = 0
     expected_example_part2_result = 0
 
-    def part1(self, input_data: Input) -> int:
-        # input_data.data contains the list of every line from your input (split on '\n')
-        # input_data.raw_data contains all the data in a single string (including all '\n')
+    def part1(self, data: Input) -> int:
+        # data.data contains the list of every line from your input (split on '\n')
+        # data.raw_data contains all the data in a single string (including all '\n')
         return 0
 
-    def part2(self, input_data: Input) -> int:
+    def part2(self, data: Input) -> int:
         return 0
 
 if __name__ == "__main__":
     load_dotenv()
     year = os.getenv('AOC_YEAR')
     session_token = os.getenv('AOC_SESSION_COOKIE')
-    day_number = "01"  # This will be replaced with the actual day number
+    day_number = "{day_number}"  # This will be replaced with the actual day number
     day = DayTemplate(year, day_number, session_token)
     day.run()
 ```
 
 **Features:**
-- `input_data.data` - List of lines from the input file (without '\n')
-- `input_data.raw_data` - Complete string with all content (including '\n')
+- `data.data` - List of lines from the input file (without '\n')
+- `data.raw_data` - Complete string with all content (including '\n')
 - `expected_example_part1_result` and `expected_example_part2_result` - Expected values to automatically validate examples
-- The framework automatically runs both parts with `example.txt` and `input.txt`, showing results and execution times
+- The framework automatically runs both parts with `example.txt` and `input.txt`, showing results and execution times with colored output
 - Each day file can be run independently from the IDE thanks to the `if __name__ == "__main__"` block
 
 
