@@ -1,5 +1,15 @@
 # Python Advent Of Code
 
+## Table of Contents
+- [What is Advent Of Code?](#what-is-advent-of-code)
+- [Installation](#installation)
+- [Start a day](#start-a-day)
+- [How to implement](#how-to-implement)
+- [Run a day](#run-a-day)
+- [Run all days](#run-all-days)
+- [Run from IDE](#run-from-ide)
+- [Acknowledgments](#acknowledgments)
+
 ## What is Advent Of Code?
 Advent of code is a series of coding challenges in the form of an advent calendar : One challenge divided in two parts per day from December 1rst up until December 25th [https://adventofcode.com/](https://adventofcode.com/)
 
@@ -15,22 +25,17 @@ AOC_YEAR=2025
 ```
 *Note: You can get your session cookie by logging into the AoC website and looking at the cookies in one of your requests using browser dev tools. This cookie is needed to automatically download your input.*
 
-## How to use it
-### Start a day
+## Start a day
 To start a day, use this command: ```uv run main.py <dayNumber>```
 
 If the day file doesn't exist, it will be automatically created from the template.
 
 Your day file will be located at: ```./<year>/<dayNumber>/day<dayNumber>.py``` (This is where you program!)
 
-#### Day directory structure
-Each day directory contains the following files:
+## How to implement
+Once the day file is created, you can implement your solution by filling in the `part1` and `part2` methods of the `DayTemplate` class.
 
-##### Input files
-- ```./<year>/<dayNumber>/input.txt``` - Your puzzle input (automatically downloaded)
-- ```./<year>/<dayNumber>/example.txt``` - Example input (you must fill this manually)
-
-##### day\<dayNumber\>.py
+### day\<dayNumber\>.py
 ```python
 import os
 
@@ -61,33 +66,37 @@ The template includes:
 - Expected results for the example input (you must fill these manually after solving the example).
 - Execution block to run the day (useful when running directly from IDE).
 
-###### Input object
-The `Input` object passed to `part1` and `part2` provides convenient access to your puzzle input:
 
-- `lines`: list[str]
-    - Each element is one line from the input file (newline characters removed via `splitlines()`).
-    - Example: `["abc", "def", "ghi"]`
-- `raw`: str
-    - The full content of the input file as a single string, exactly as read (including newlines).
-    - Useful when you need custom parsing or to preserve exact formatting.
+Each day directory contains the following files:
 
-Typical usage inside your solution methods:
+### Input object
+Use the `Input` object provided to `part1` and `part2` to parse your puzzle input efficiently.
+
+Input fields:
+- `lines` (list[str]) — one line per input row, with newline characters removed (via `splitlines()`).
+- `raw` (str) — the entire input as a single string, exactly as read (including newlines).
+
+### Common patterns
 
 ```python
-# Access lines
-lines = data.lines
+# Parse integers per line
+numbers = [int(x) for x in data.lines if x]
 
-# Access full raw content
-text = data.raw
-
-# Parse integers from lines
-numbers = [int(x) for x in lines if x]
-
-# Split the raw content by blank lines (common in AoC)
+# Split by blank lines (very common in AoC)
 blocks = data.raw.strip().split("\n\n")
+
+# Parse a grid of characters
+grid = [list(row) for row in data.lines]
+
+# Parse coordinates of the form x,y
+points = [tuple(map(int, line.split(","))) for line in data.lines]
 ```
 
-### Run a day
+### Input files
+- ```./<year>/<dayNumber>/input.txt``` - Your puzzle input (automatically downloaded)
+- ```./<year>/<dayNumber>/example.txt``` - Example input (you must fill it with the problem's example)
+
+## Run a day
 To run a day, use the same command: ```uv run main.py <dayNumber>```
 
 The framework will execute your solution and:
@@ -95,21 +104,15 @@ The framework will execute your solution and:
 2. Create an empty `example.txt` if it doesn't exist (you must fill it with the problem's example)
 3. Run both parts with the example and validate against expected values (showing ✓ in green or ✗ in red)
 4. Run both parts with the real input
-5. Display execution times for each part
+5. Display the results and execution time for each part
 
-**Generated files:**
-- ```./<year>/<dayNumber>/day<dayNumber>.py``` - Your code
-- ```./<year>/<dayNumber>/input.txt``` - Automatic input from AoC
-- ```./<year>/<dayNumber>/example.txt``` - Example (you fill this manually)
-- ```./<year>/<dayNumber>/output.txt``` - Execution results
-
-### Run all days
+## Run all days
 To run all days (1-25): ```uv run main.py all```
 
-### Run from IDE
+## Run from IDE
 Each day file can be executed directly from your IDE without using `main.py`. Simply open the day file (e.g., `./2025/01/day01.py`) and run it directly. The `if __name__ == "__main__"` block will handle loading the environment variables and executing the solution.
 
 **Note:** Make sure your `.env` file is properly configured with `AOC_YEAR` and `AOC_SESSION_COOKIE` before running from the IDE.
 
-#### Credits
-This repository structure were inspired by [william-fecteau Advent Of Code Python Framework](https://github.com/william-fecteau/AdventOfCodePythonFramework)
+## Acknowledgments
+This repository structure was inspired by the [Advent Of Code Python Framework](https://github.com/william-fecteau/AdventOfCodePythonFramework) by William Fecteau.
