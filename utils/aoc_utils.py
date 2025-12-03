@@ -32,11 +32,14 @@ class AOCDay:
         print(f"\033[93m{'─' * 50}\033[0m")
 
         print(f"\n\033[94m📝 Executing example...\033[0m")
+        start_time = time.time()
         part1_example_result = self.part1(test_data)
+        part1_example_time = (time.time() - start_time) * 1000
         if part1_example_result == self.expected_example_part1_result:
             print(f"   Result: {part1_example_result} \033[92m✓ OK\033[0m")
         else:
             print(f"   Result: {part1_example_result} \033[91m✗ Expected {self.expected_example_part1_result}\033[0m")
+        print(f"   ⏱️  Time: \033[95m{part1_example_time:.2f} ms\033[0m")
 
         print(f"\n\033[94m🚀 Executing input...\033[0m")
         start_time = time.time()
@@ -51,11 +54,14 @@ class AOCDay:
         print(f"\033[93m{'─' * 50}\033[0m")
 
         print(f"\n\033[94m📝 Executing example...\033[0m")
+        start_time = time.time()
         part2_example_result = self.part2(test_data)
+        part2_example_time = (time.time() - start_time) * 1000
         if part2_example_result == self.expected_example_part2_result:
             print(f"   Result: {part2_example_result} \033[92m✓ OK\033[0m")
         else:
             print(f"   Result: {part2_example_result} \033[91m✗ Expected {self.expected_example_part2_result}\033[0m")
+        print(f"   ⏱️  Time: \033[95m{part2_example_time:.2f} ms\033[0m")
 
         print(f"\n\033[94m🚀 Executing input...\033[0m")
         start_time = time.time()
