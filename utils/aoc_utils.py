@@ -90,7 +90,8 @@ class AOCDay:
             with open(input_path, 'w') as f:
                 f.write(result.text)
         else:
-            raise ConnectionError("Could not connect to AoC website to download input data. "
+            raise ConnectionError("Could not connect to AoC website to download input data, "
+                                  "maybe the day is not yet available? "
                                   "Error code {}: {}".format(result.status_code, result.text))
 
     def read_example(self) -> Input:
