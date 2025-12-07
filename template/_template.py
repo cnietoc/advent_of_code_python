@@ -1,7 +1,9 @@
 import os
 
-from utils.aoc_utils import AOCDay, Input
 from dotenv import load_dotenv
+
+from utils.aoc_utils import AOCDay, Input
+
 
 class DayTemplate(AOCDay):
     expected_example_part1_result = 0
@@ -12,6 +14,7 @@ class DayTemplate(AOCDay):
 
     def part2(self, data: Input) -> int:
         return 0
+
 
 if __name__ == "__main__":
     load_dotenv()

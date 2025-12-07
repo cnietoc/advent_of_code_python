@@ -1,7 +1,8 @@
 import os
 
-from utils.aoc_utils import AOCDay, Input
 from dotenv import load_dotenv
+
+from utils.aoc_utils import AOCDay, Input
 
 
 class Day05(AOCDay):

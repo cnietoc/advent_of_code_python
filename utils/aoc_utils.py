@@ -110,6 +110,7 @@ class AOCDay:
     def part2(self, data: Input) -> int:
         pass
 
+
 class Input:
     lines = []
     raw = ""

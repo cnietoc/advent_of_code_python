@@ -1,9 +1,9 @@
 import os
-from time import process_time
+from functools import lru_cache
+
+from dotenv import load_dotenv
 
 from utils.aoc_utils import AOCDay, Input
-from dotenv import load_dotenv
-from functools import lru_cache
 
 
 class Day07(AOCDay):
@@ -13,7 +13,11 @@ class Day07(AOCDay):
     def part1(self, data: Input) -> int:
         diagram = [list(line) for line in data.lines]
 
-        self._print_diagram("Initial diagram:", diagram)
+        def _print_diagram(title, diagram):
+            diagram_str = "\n".join("".join(line) for line in diagram)
+            print(f"\n{title}\n{diagram_str}\n")
+
+        _print_diagram("Initial diagram:", diagram)
         split_count = 0
         for line_index, line in enumerate(diagram):
             for char_index, char in enumerate(line):
@@ -26,7 +30,7 @@ class Day07(AOCDay):
                             diagram[line_index + 1][char_index - 1] = "|"
                             diagram[line_index + 1][char_index + 1] = "|"
 
-        self._print_diagram("Final diagram:", diagram)
+        _print_diagram("Final diagram:", diagram)
         return split_count
 
     def part2(self, data: Input) -> int:
@@ -47,10 +51,6 @@ class Day07(AOCDay):
             return realities
 
         return _process_diagram(1, tachyon_index)
-
-    def _print_diagram(self, title, diagram):
-        diagram_str = "\n".join("".join(line) for line in diagram)
-        print(f"\n{title}\n{diagram_str}\n")
 
 
 if __name__ == "__main__":

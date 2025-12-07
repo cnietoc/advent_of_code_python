@@ -1,7 +1,8 @@
 import os
 
-from utils.aoc_utils import AOCDay, Input
 from dotenv import load_dotenv
+
+from utils.aoc_utils import AOCDay, Input
 
 
 def remove_rolls(lines: list[str]) -> tuple[int, list[str]]:

@@ -1,7 +1,9 @@
 import os
 
-from utils.aoc_utils import AOCDay, Input
 from dotenv import load_dotenv
+
+from utils.aoc_utils import AOCDay, Input
+
 
 class Day01(AOCDay):
     expected_example_part1_result = 3
@@ -29,6 +31,7 @@ class Day01(AOCDay):
                 dial.turn_right(int(line[1:]))
         return dial.count_of_zeros
 
+
 class Dial:
     def __init__(self):
         self.position = 50
@@ -55,6 +58,7 @@ class Dial:
             self.position = 99
         if self.position == 0:
             self.count_of_zeros += 1
+
 
 if __name__ == "__main__":
     load_dotenv()
