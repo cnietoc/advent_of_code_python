@@ -6,4 +6,5 @@ requires-python = ">=3.14"
 dependencies = [
     "requests",
     "python-dotenv",
+    "matplotlib",
 ]
